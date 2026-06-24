@@ -1,0 +1,706 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================
+   DARK MODE SUPPORT
+   =========================================== */
+.dark {
+  --color-text-dark: #F5F5F5;
+  --color-text-secondary: #A3A3A3;
+  --color-text-light: #737373;
+  --color-text-muted: #525252;
+  
+  --color-bg: #171717;
+  --color-bg-soft: #262626;
+  --color-bg-alt: #1F1F1F;
+  --color-bg-dark: #0A0A0A;
+  
+  background-color: var(--color-bg);
+  color: var(--color-text-dark);
+}
+
+/* Dark mode specific overrides */
+.dark body {
+  background-color: var(--color-bg);
+  color: var(--color-text-dark);
+}
+
+.dark h1, 
+.dark h2, 
+.dark h3, 
+.dark h4, 
+.dark h5, 
+.dark h6 {
+  color: #F5F5F5;
+}
+
+.dark p {
+  color: #A3A3A3;
+}
+
+.dark a {
+  color: #D4AF37;
+}
+
+.dark a:hover {
+  color: #E5C158;
+}
+
+/* Dark mode card styles */
+.dark .card {
+  background-color: #262626;
+  border-color: #404040;
+}
+
+.dark .card-elevated {
+  background-color: #262626;
+}
+
+.dark .card-bordered {
+  background-color: #262626;
+  border-color: #404040;
+}
+
+/* Dark mode input styles */
+.dark .input-field {
+  background-color: #262626;
+  border-color: #404040;
+  color: #F5F5F5;
+}
+
+.dark .input-field::placeholder {
+  color: #737373;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #262626;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #525252;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}
+
+/* Safe area padding for mobile bottom nav */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* ===========================================
+   CSS CUSTOM PROPERTIES - Design Tokens
+   =========================================== */
+:root {
+  /* Color Variables */
+  --color-primary: #A86A2C;
+  --color-primary-hover: #8C5322;
+  --color-primary-light: #C48A4C;
+  --color-primary-dark: #7A5018;
+  
+  --color-text-dark: #1E1E1E;
+  --color-text-secondary: #555555;
+  --color-text-light: #888888;
+  --color-text-muted: #AAAAAA;
+  
+  --color-bg: #FFFFFF;
+  --color-bg-soft: #F7F5F2;
+  --color-bg-alt: #F5F3F0;
+  --color-bg-dark: #1A1A1A;
+  
+  --color-accent-success: #2E7D32;
+  --color-accent-error: #D32F2F;
+  --color-accent-warning: #F57C00;
+  --color-accent-info: #1976D2;
+  
+  /* Spacing Variables */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-section-desktop: 5rem;
+  --spacing-section-mobile: 3rem;
+  
+  /* Border Radius Variables */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadow Variables */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-button: 0 4px 14px rgba(168, 106, 44, 0.25);
+  --shadow-button-hover: 0 8px 25px rgba(168, 106, 44, 0.35);
+  
+  /* Typography Variables */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Transition Variables - Premium Standard */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-premium: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Premium Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Container Variable */
+  --container-xl: 1280px;
+}
+
+/* ===========================================
+   BASE STYLES
+   =========================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Base Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-dark);
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ===========================================
+   COMPONENT: BUTTONS
+   =========================================== */
+@layer components {
+  /* Primary Button */
+  .btn-primary {
+    @apply bg-primary text-white font-medium px-7 py-3.5 rounded-md;
+    @apply transition-all duration-300 ease;
+    @apply hover:bg-primary-hover hover:-translate-y-0.5;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    box-shadow: var(--shadow-button);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: var(--shadow-button-hover);
+  }
+  
+  /* Secondary Button */
+  .btn-secondary {
+    @apply border border-primary text-primary bg-transparent font-medium px-7 py-3.5 rounded-md;
+    @apply transition-all duration-300 ease;
+    @apply hover:bg-primary hover:text-white;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+  
+  /* Ghost Button */
+  .btn-ghost {
+    @apply text-primary bg-transparent font-medium px-5 py-2.5 rounded-md;
+    @apply transition-all duration-300 ease;
+    @apply hover:bg-primary/10;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+  
+  /* Icon Button */
+  .btn-icon {
+    @apply p-2.5 rounded-full bg-neutral-100 text-neutral-600;
+    @apply transition-all duration-300 ease;
+    @apply hover:bg-primary hover:text-white;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+}
+
+/* ===========================================
+   COMPONENT: CARDS
+   =========================================== */
+@layer components {
+  .card {
+    @apply bg-white rounded-xl overflow-hidden;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition);
+  }
+  
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-xl overflow-hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .card-bordered {
+    @apply bg-white rounded-xl overflow-hidden border border-neutral-200;
+  }
+}
+
+/* ===========================================
+   COMPONENT: INPUTS
+   =========================================== */
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white;
+    @apply text-neutral-900 placeholder-neutral-400;
+    @apply transition-all duration-300 ease;
+    @apply focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20;
+  }
+  
+  .input-field:focus {
+    box-shadow: var(--shadow-button);
+  }
+  
+  .input-error {
+    @apply border-accent-error focus:border-accent-error focus:ring-accent-error/20;
+  }
+}
+
+/* ===========================================
+   UTILITY: SECTION PADDING
+   =========================================== */
+@layer components {
+  .section {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  .section-sm {
+    @apply py-8 md:py-12;
+  }
+  
+  .section-lg {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+}
+
+/* ===========================================
+   UTILITY: CONTAINER
+   =========================================== */
+@layer components {
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* ===========================================
+   CUSTOM ANIMATIONS
+   =========================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes parallaxSlow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+
+@keyframes parallaxMedium {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-30px); }
+}
+
+@keyframes parallaxFast {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-70px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(168, 106, 44, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(168, 106, 44, 0.6); }
+}
+
+@keyframes luxuryFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(0.5deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-5px) rotate(-0.5deg); }
+}
+
+@keyframes elegantFade {
+  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes buttonLuxury {
+  0% { transform: scale(1); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+  50% { transform: scale(0.98); box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+  100% { transform: scale(1); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+}
+
+@keyframes imageZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes cardLift {
+  0% { transform: translateY(0) scale(1); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+  100% { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+}
+
+@keyframes heroFadeOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
+}
+
+/* Animation Classes */
+.animate-fade-in { animation: fadeIn 1s ease-out; }
+.animate-slide-up { animation: slideUp 0.8s ease-out; }
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+.animate-scale-in { animation: scaleIn 0.5s ease-out; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-parallax-slow { animation: parallaxSlow 1s ease-out forwards; }
+.animate-parallax-medium { animation: parallaxMedium 1s ease-out forwards; }
+.animate-parallax-fast { animation: parallaxFast 1s ease-out forwards; }
+.animate-shimmer { animation: shimmer 2s linear infinite; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); background-size: 200% 100%; }
+.animate-glow { animation: glow 2s ease-in-out infinite; }
+.animate-luxury-float { animation: luxuryFloat 6s ease-in-out infinite; }
+.animate-elegant-fade { animation: elegantFade 0.8s ease-out; }
+.animate-button-luxury { animation: buttonLuxury 0.2s ease-in-out; }
+.animate-image-zoom { animation: imageZoom 0.3s ease-out forwards; }
+.animate-card-lift { animation: cardLift 0.3s ease-out forwards; }
+.animate-hero-fade-out { animation: heroFadeOut 1s ease-out forwards; }
+
+/* ===========================================
+   PREMIUM ANIMATION SYSTEM
+   =========================================== */
+
+/* Premium Reveal Animations - 350ms duration */
+@keyframes premiumFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes premiumSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes premiumFadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes premiumScaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes premiumImageZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+@keyframes premiumCardLift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-4px); }
+}
+
+@keyframes premiumButtonPress {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+@keyframes premiumShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes premiumPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Premium Animation Classes */
+.premium-animate-fade-in {
+  animation: premiumFadeIn 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.premium-animate-slide-up {
+  animation: premiumSlideUp 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.premium-animate-fade-in-up {
+  animation: premiumFadeInUp 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.premium-animate-scale-in {
+  animation: premiumScaleIn 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.premium-image-zoom {
+  animation: premiumImageZoom 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.premium-card-lift {
+  animation: premiumCardLift 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Hero Text Reveal Animation */
+@keyframes heroTextReveal {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero-text-reveal {
+  animation: heroTextReveal 600ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 200ms;
+  opacity: 0;
+}
+
+/* Staggered animation delays */
+.stagger-delay-1 { animation-delay: 100ms; }
+.stagger-delay-2 { animation-delay: 200ms; }
+.stagger-delay-3 { animation-delay: 300ms; }
+.stagger-delay-4 { animation-delay: 400ms; }
+.stagger-delay-5 { animation-delay: 500ms; }
+.stagger-delay-6 { animation-delay: 600ms; }
+
+/* ===========================================
+   HOVER EFFECTS
+   =========================================== */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.hover-luxury-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-luxury-glow:hover {
+  box-shadow: 0 0 30px rgba(168, 106, 44, 0.4);
+  transform: translateY(-2px);
+}
+
+.hover-luxury-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-luxury-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-luxury-lift {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-luxury-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* ===========================================
+   LUXURY COMPONENTS
+   =========================================== */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #A86A2C 0%, #8C5322 100%);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(168, 106, 44, 0.3);
+}
+
+.btn-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(168, 106, 44, 0.4);
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-luxury:hover::before {
+  left: 100%;
+}
+
+.card-luxury {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 243, 240, 0.8) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 106, 44, 0.2);
+  transition: all 0.3s ease;
+}
+
+.card-luxury:hover {
+  border-color: rgba(168, 106, 44, 0.4);
+  box-shadow: 0 20px 40px rgba(168, 106, 44, 0.1);
+}
+
+/* ===========================================
+   GRADIENT BACKGROUNDS
+   =========================================== */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #A86A2C 0%, #8C5322 100%);
+}
+
+/* ===========================================
+   PARALLAX CONTAINER
+   =========================================== */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-element {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ===========================================
+   ACCESSIBILITY - Reduced Motion
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .animate-parallax-slow,
+  .animate-parallax-medium,
+  .animate-parallax-fast,
+  .animate-shimmer,
+  .animate-glow,
+  .animate-luxury-float,
+  .animate-elegant-fade,
+  .animate-button-luxury,
+  .animate-image-zoom,
+  .animate-card-lift,
+  .animate-cinematic-zoom,
+  .animate-hero-fade-out {
+    animation: none;
+  }
+
+  .hover-luxury-glow,
+  .hover-luxury-scale,
+  .hover-luxury-lift,
+  .hover-luxury-shimmer,
+  .btn-luxury,
+  .card-luxury,
+  .hover-lift {
+    transition: none;
+  }
+
+  .hover-luxury-shimmer::before { display: none; }
+  .btn-luxury::before { display: none; }
+}
+
+/* ===========================================
+   CUSTOM SCROLLBAR
+   =========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ===========================================
+   RESPONSIVE TYPOGRAPHY
+   =========================================== */
+@screen sm {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+@screen lg {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.375rem; }
+}
