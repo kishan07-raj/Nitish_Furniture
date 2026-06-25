@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext(null);
 
-const API_BASE = "";
+const API_BASE = "https://nitish-furniture.onrender.com";
 
 // Role hierarchy for frontend checks
 export const ROLES = {
